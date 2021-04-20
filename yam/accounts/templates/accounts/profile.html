@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block header %}
+  <h1>{% block title %}{{ user.username }}'s Profile{% endblock %}</h1>
+{% endblock %}
+{% block content %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+profile
+
+{% endblock %}
