@@ -1,7 +1,10 @@
 <!doctype html>
-<title>{% block title %}{% endblock %} - YAM</title>
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<head>
+  <meta charset="utf-8"/>
+  <title>{% block title %}{% endblock %} - YAM</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
 <nav>
   <h1><a href="{% url 'accounts:logout' %}">YAM</a></h1>
   <ul>
@@ -12,7 +15,7 @@
 
     {% else %}
       <li><a href="{% url 'accounts:register' %}">Register</a>
-      <li><a href="{% url 'accounts:login' %}">Log In</a>
+      <li><a href="{% url 'accounts:login'%}">Log In</a>
     {% endif %}
   </ul>
 </nav>

@@ -1,5 +1,5 @@
 from django import forms
-from .models import User
+from . import models
 
 class UserForm(forms.ModelForm):
     error_css_class = 'error'
@@ -7,7 +7,7 @@ class UserForm(forms.ModelForm):
     password=forms.CharField(widget=forms.PasswordInput())
     confirm_password=forms.CharField(widget=forms.PasswordInput())
     class Meta:
-        model=User
+        model=models.User
         fields=('username','email','password')
 
     def clean(self):
@@ -19,3 +19,10 @@ class UserForm(forms.ModelForm):
             raise forms.ValidationError(
                 {'password': ["password and confirm_password does not match",]}
             )
+
+class ProfileForm(forms.ModelForm):
+    error_css_class = 'error'
+    required_css_class = 'required'
+    class Meta:
+        model=models.Profile
+        fields=('home','office')
