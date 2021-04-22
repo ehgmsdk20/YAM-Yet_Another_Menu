@@ -103,15 +103,6 @@ function displayPlaces(places) {
                 infowindow.close();
             };
 
-            itemEl.onclick = function() {
-                if (!itemEl.road_address_name) {
-                    opener.document.getElementById(inputid).value = itemEl.road_address_name;
-                }
-                else {
-                    opener.document.getElementById(inputid).value = itemEl.address_name;
-                }
-                window.close();
-            };
         })(marker, places[i].place_name);
 
         fragment.appendChild(itemEl);
@@ -136,8 +127,20 @@ function getListItem(index, places) {
     if (places.road_address_name) {
         itemStr += '    <span>' + places.road_address_name + '</span>' +
                     '   <span class="jibun gray">' +  places.address_name  + '</span>';
+
+        el.onclick = function(){
+            opener.document.getElementById(inputid).value = places.road_address_name;
+            window.close();
+        }
+ 
     } else {
-        itemStr += '    <span>' +  places.address_name  + '</span>'; 
+        itemStr += '    <span>' +  places.address_name  + '</span>';
+
+        el.onclick = function(){
+            opener.document.getElementById(inputid).value = places.road_address_name;
+            window.close();
+        }
+
     }
                  
       itemStr += '  <span class="tel">' + places.phone  + '</span>' +
@@ -145,6 +148,7 @@ function getListItem(index, places) {
 
     el.innerHTML = itemStr;
     el.className = 'item';
+
     el.road_address_name = places.road_address_name;
     el.address_name = places.address_name;
 

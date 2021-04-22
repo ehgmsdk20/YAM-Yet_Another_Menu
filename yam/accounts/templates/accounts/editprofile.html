@@ -8,14 +8,14 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p}}
-        <input type="submit" value="register">
+        <input type="submit" value="editprofile">
 	</form>
     {% load static %}
     <script type="text/javascript">
         function openMap(input_id)
         {
             var url = "{% url 'kakaomap:searchaddr' 'input_id' %}".replace('input_id', input_id);
-            var windowObj = window.open(url,'MapForm','width=450,height=350,scrollbars=no');
+            var windowObj = window.open(url,'MapForm','width=700,height=450,scrollbars=no');
         }
         document.getElementById("id_home").onfocus = function(){ openMap(this.id); };
         document.getElementById("id_office").onfocus = function(){ openMap(this.id); };

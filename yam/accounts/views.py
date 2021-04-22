@@ -41,10 +41,16 @@ def profile(request):
 def editprofile(request):
     
     if request.method == 'POST':
-        if(Profile.objects.filter(user=request.user)):
-            profile_form = myforms.ProfileForm(request.POST, instance=request.user.profile)
+        profile = Profile.objects.get(user=request.user)
+        if(profile):
+            profile_form = myforms.ProfileForm(request.POST, instance=profile)
             if profile_form.is_valid():
-                profile = profile_form.save()
+                print(profile_form.cleaned_data.items())
+                print("1")
+                not_empty_data = [ k for k,v in profile_form.cleaned_data.items() if v!='' and v!=[] ]
+                profile = profile_form.save(commit=False)
+                profile.save(update_fields=not_empty_data)
+
         else:
             profile_form = myforms.ProfileForm(request.POST)
             if profile_form.is_valid():

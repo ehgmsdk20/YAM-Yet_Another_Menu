@@ -23,6 +23,14 @@ class UserForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     error_css_class = 'error'
     required_css_class = 'required'
+
     class Meta:
         model=models.Profile
-        fields=('home','office')
+        fields=('home','office','allergy')
+        widgets = {
+            'home': forms.TextInput(attrs={'placeholder': '주소를 입력하세요.'}),
+            'office': forms.TextInput(attrs={'placeholder': '주소를 입력하세요.'}),
+        }
+
+
+
