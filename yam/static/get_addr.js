@@ -102,6 +102,16 @@ function displayPlaces(places) {
             itemEl.onmouseout =  function () {
                 infowindow.close();
             };
+
+            itemEl.onclick = function() {
+                if (!itemEl.road_address_name) {
+                    opener.document.getElementById(inputid).value = itemEl.road_address_name;
+                }
+                else {
+                    opener.document.getElementById(inputid).value = itemEl.address_name;
+                }
+                window.close();
+            };
         })(marker, places[i].place_name);
 
         fragment.appendChild(itemEl);
@@ -135,6 +145,8 @@ function getListItem(index, places) {
 
     el.innerHTML = itemStr;
     el.className = 'item';
+    el.road_address_name = places.road_address_name;
+    el.address_name = places.address_name;
 
     return el;
 }
@@ -205,7 +217,7 @@ function displayInfowindow(marker, title) {
     var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
 
     infowindow.setContent(content);
-    infowindow.open(map, marker);
+    infowindow.open(map, marker);   
 }
 
  // 검색결과 목록의 자식 Element를 제거하는 함수입니다
@@ -213,4 +225,14 @@ function removeAllChildNods(el) {
     while (el.hasChildNodes()) {
         el.removeChild (el.lastChild);
     }
+}
+
+function click(){
+
+    window.open('', 'newWindow', 'width=500, height=500');
+
+    document.form.target = 'newWindow';
+
+    document.form.submit();
+
 }

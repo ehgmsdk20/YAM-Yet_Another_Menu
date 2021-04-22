@@ -5,8 +5,15 @@
 {% endblock %}
 {% block content %}
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-profile
+{% if not user.profile %}
+You didn't edit your profile yet.
+{% else %}
+<br>
+home: {{user.profile.home}}
+<br>
+<br>
+office: {{user.profile.office}}
+{% endif %}
+<p><a href="{%url 'accounts:editprofile'%}">Edit profile</a></p>
 
 {% endblock %}

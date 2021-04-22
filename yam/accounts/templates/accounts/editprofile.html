@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <h1>{% block title %}Edit Profile{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <input type="submit" value="register">
+	</form>
+    {% load static %}
+    <script type="text/javascript">
+        function openMap(input_id)
+        {
+            var url = "{% url 'kakaomap:searchaddr' 'input_id' %}".replace('input_id', input_id);
+            var windowObj = window.open(url,'MapForm','width=450,height=350,scrollbars=no');
+        }
+        document.getElementById("id_home").onfocus = function(){ openMap(this.id); };
+        document.getElementById("id_office").onfocus = function(){ openMap(this.id); };
+    </script>
+
+{% endblock %}
