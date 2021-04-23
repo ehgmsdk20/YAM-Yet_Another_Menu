@@ -8,14 +8,13 @@
 {% if not user.profile %}
 You didn't edit your profile yet.
 {% else %}
-<br>
-home: {{user.profile.home}}
-<br>
-<br>
-office: {{user.profile.office}}
-<br>
-<br>
-allergies: {{user.profile.allergy}}
+<ul>
+  <li>home: {{user.profile.home}}</li>
+  <br>
+  <li>office: {{user.profile.office}}</li>
+  <br>
+  <li>allergies: {{user.profile.allergy}}</li>
+</ul>
 {% endif %}
 <p><a href="{%url 'accounts:editprofile'%}">Edit profile</a></p>
 

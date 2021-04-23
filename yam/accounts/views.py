@@ -50,7 +50,8 @@ def editprofile(request):
                 not_empty_data = [ k for k,v in profile_form.cleaned_data.items() if v!='' and v!=[] ]
                 profile = profile_form.save(commit=False)
                 profile.save(update_fields=not_empty_data)
-
+            print(profile_form.cleaned_data.items())
+            print("1")
         else:
             profile_form = myforms.ProfileForm(request.POST)
             if profile_form.is_valid():
