@@ -36,15 +36,40 @@ class ChoiceArrayField(ArrayField):
         return super(ArrayField, self).formfield(**defaults)
     
     def from_db_value(self, value, expression, connection):
-        if value is None:
-            return value
+        '''
+        This method changes the string stored in database into MSFList(list containing choices information) 
+        when it is called.
+        '''
+        if value=='':
+            return None
         else:
             return MSFList(self.base_field.choices, map(lambda x: x.strip(), value.lstrip('{').rstrip('}').replace('，', ',').split(',')))
+
+
+class LatLngField(models.CharField):
+
+    def formfield(self, **kwargs):
+        defaults = {
+            'widget': forms.HiddenInput,
+        }
+        defaults.update(kwargs)
+        return super(models.CharField, self).formfield(**defaults)
+    
+    def from_db_value(self, value, expression, connection):
+
+        if value=='':
+            return value
+        else:
+            return list(map(lambda x: x.strip(), value.replace('，', ',').split(',')))
+
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     home = models.CharField(max_length=30, blank=True)
+    home_latlng = LatLngField(max_length=50, blank=True)
     office = models.CharField(max_length=30, blank=True)
+    office_latlng = LatLngField(max_length=50, blank=True)
     ALLERGY_CHOICES = (
         ('SHELL', '갑각류 알레르기'),
         ('NUT', '견과 알레르기'),

@@ -26,7 +26,7 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model=models.Profile
-        fields=('home','office','allergy')
+        exclude = ('user',)
         widgets = {
             'home': forms.TextInput(attrs={'placeholder': '주소를 입력하세요.'}),
             'office': forms.TextInput(attrs={'placeholder': '주소를 입력하세요.'}),

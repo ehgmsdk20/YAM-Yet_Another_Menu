@@ -44,6 +44,7 @@ def editprofile(request):
         profile = Profile.objects.get(user=request.user)
         if(profile):
             profile_form = myforms.ProfileForm(request.POST, instance=profile)
+            print(profile_form)
             if profile_form.is_valid():
                 print(profile_form.cleaned_data.items())
                 print("1")

@@ -130,6 +130,7 @@ function getListItem(index, places) {
 
         el.onclick = function(){
             opener.document.getElementById(inputid).value = places.road_address_name;
+            opener.document.getElementById(inputid+"_latlng").value = places.x+','+places.y;
             window.close();
         }
  
@@ -138,6 +139,7 @@ function getListItem(index, places) {
 
         el.onclick = function(){
             opener.document.getElementById(inputid).value = places.road_address_name;
+            opener.document.getElementById(inputid+"_latlng").value = places.x+','+places.y;
             window.close();
         }
 
@@ -148,9 +150,6 @@ function getListItem(index, places) {
 
     el.innerHTML = itemStr;
     el.className = 'item';
-
-    el.road_address_name = places.road_address_name;
-    el.address_name = places.address_name;
 
     return el;
 }
