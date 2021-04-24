@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block header %}
+  <h1>{% block title %}YAM{% endblock %}</h1>
+{% endblock %}
+{% block content %}
+
+<p>We can recommend a lunch menu based on your information</p>
+<a href="{% url 'accounts:logout'%}">추천 받기</a>
+{% endblock %}

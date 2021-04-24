@@ -20,4 +20,5 @@ urlpatterns = [
     path('kakaomap/', include('kakaomap.urls')),
     path('accounts/', include('accounts.urls')),
     path('admin/', admin.site.urls),
+    path('', include('lunchmenu.urls')),
 ]
