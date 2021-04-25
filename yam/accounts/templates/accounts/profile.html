@@ -16,6 +16,9 @@ You didn't edit your profile yet.
   <li>allergies: {{user.profile.allergy}}</li>
 </ul>
 {% endif %}
-<p><a href="{%url 'accounts:editprofile'%}">Edit profile</a></p>
-
+<br>
+<ul class='menu'>
+  <li><a href="{%url 'accounts:editprofile'%}">Edit profile</a></li>          
+  <li><a href="{%url 'lunchmenu:index'%}">Main page</a></li>
+</ul>
 {% endblock %}

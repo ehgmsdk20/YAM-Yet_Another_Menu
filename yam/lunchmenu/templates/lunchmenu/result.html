@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block header %}
+  <h1>{% block title %}Result{% endblock %}</h1>
+{% endblock %}
+{% block content %}
+<input type="hidden" id="lat" value="{{lat}}">
+<input type="hidden" id="lng" value="{{lng}}">
+<div id='result'></div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=42c0c3731cfd46222b7a73bc07e9c572&libraries=services"></script>
+{% load static %}
+<script type="text/javascript" src="{% static 'get_restaurants.js' %}"></script>
+
+
+{% endblock %}

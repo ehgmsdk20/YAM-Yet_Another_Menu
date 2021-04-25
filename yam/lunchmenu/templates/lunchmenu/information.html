@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block header %}
+  <h1>{% block title %}Information{% endblock %}</h1>
+{% endblock %}
+{% block content %}
+
+{% if not user.profile %}
+<p>You didn't edit your profile yet.</p>
+<a href="{%url 'accounts:editprofile'%}">Edit profile</a>
+{% elif user.profile.home == '' %}
+<p>You didn't let us know your home address yet.</p>
+<a href="{%url 'accounts:editprofile'%}">Edit profile</a>
+{% elif user.profile.office == '' %}
+<p>You didn't let us know your office address yet.</p>
+<a href="{%url 'accounts:editprofile'%}">Edit profile</a>
+{% else %}
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="result">
+</form>
+{% endif %}
+
+{% endblock %}

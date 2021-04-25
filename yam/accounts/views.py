@@ -15,8 +15,6 @@ def register(request):
     user_form = myforms.UserForm(request.POST or None)
     profile_form = myforms.ProfileForm(request.POST or None)
     if request.method == 'POST':
-        user_form = UserForm(request.POST)
-
         if user_form.is_valid():
             user = user_form.save(commit=False)
             user.set_password(user.password)
@@ -41,7 +39,7 @@ def profile(request):
 def editprofile(request):
     
     if request.method == 'POST':
-        profile = Profile.objects.get(user=request.user)
+        profile = Profile.get_or_none(Profile,user=request.user)
         if(profile):
             profile_form = myforms.ProfileForm(request.POST, instance=profile)
             if profile_form.is_valid():

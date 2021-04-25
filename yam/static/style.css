@@ -26,3 +26,12 @@ input[type=submit] { align-self: start; min-width: 10em; }
 .error input, .error select {
     border: 2px red solid;
 }
+.content .menu {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+}
+
+.content .menu li {
+    margin-right: 20px;
+}

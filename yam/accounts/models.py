@@ -65,6 +65,11 @@ class LatLngField(models.CharField):
 
 
 class Profile(models.Model):
+    def get_or_none(self, *args, **kwargs):
+        try:
+            return self.objects.get(*args, **kwargs)
+        except self.DoesNotExist:
+            return None
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     home = models.CharField(max_length=30, blank=True)
     home_latlng = LatLngField(max_length=50, blank=True)

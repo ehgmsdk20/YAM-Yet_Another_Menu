@@ -130,7 +130,7 @@ function getListItem(index, places) {
 
         el.onclick = function(){
             opener.document.getElementById(inputid).value = places.road_address_name;
-            opener.document.getElementById(inputid+"_latlng").value = places.x+','+places.y;
+            opener.document.getElementById(inputid+"_latlng").value = places.y+','+places.x;
             window.close();
         }
  
@@ -139,7 +139,7 @@ function getListItem(index, places) {
 
         el.onclick = function(){
             opener.document.getElementById(inputid).value = places.road_address_name;
-            opener.document.getElementById(inputid+"_latlng").value = places.x+','+places.y;
+            opener.document.getElementById(inputid+"_latlng").value = places.y+','+places.x;
             window.close();
         }
 

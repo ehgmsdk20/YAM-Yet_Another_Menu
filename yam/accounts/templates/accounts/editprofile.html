@@ -17,8 +17,8 @@
             var url = "{% url 'kakaomap:searchaddr' 'input_id' %}".replace('input_id', input_id);
             var windowObj = window.open(url,'MapForm','width=700,height=450,scrollbars=no');
         }
-        document.getElementById("id_home").onfocus = function(){ openMap(this.id); };
-        document.getElementById("id_office").onfocus = function(){ openMap(this.id); };
+        document.getElementById("id_home").onfocus = function(){ this.blur(); openMap(this.id); };
+        document.getElementById("id_office").onfocus = function(){ this.blur(); openMap(this.id); };
     </script>
 
 {% endblock %}
