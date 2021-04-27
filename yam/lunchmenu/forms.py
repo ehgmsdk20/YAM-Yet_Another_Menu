@@ -7,5 +7,6 @@ class LocChooseForm(forms.Form):
         if self.profile:
             self.fields['current_location'].choices = [(self.profile.home_latlng,'Home: '+self.profile.home),
                                          (self.profile.office_latlng,'Office: '+self.profile.office)]
- 
+
     current_location = forms.ChoiceField(widget=forms.RadioSelect)
+    radius = forms.IntegerField(label="검색 반경(m)")

@@ -2,6 +2,7 @@ var places = new kakao.maps.services.Places();
 
 const lat = document.getElementById("lat").value.replaceAll("'","");
 const lng = document.getElementById("lng").value.replaceAll("'","");
+const rad = document.getElementById("radius").value;
 var callback = function(result, status) {
     if (status === kakao.maps.services.Status.OK) {
         console.log(result);
@@ -16,7 +17,7 @@ var callback = function(result, status) {
 places.categorySearch('FD6', callback, {
     // Map 객체를 지정하지 않았으므로 좌표객체를 생성하여 넘겨준다.
     location: new kakao.maps.LatLng(lat, lng),
-    radius: 100
+    radius: rad
 });
 
 
