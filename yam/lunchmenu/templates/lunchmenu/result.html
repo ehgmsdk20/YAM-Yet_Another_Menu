@@ -10,6 +10,11 @@
 <input type="hidden" id="radius" value="{{radius}}">
 <div id='result'></div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=42c0c3731cfd46222b7a73bc07e9c572&libraries=services"></script>
+<script type=>
+  const lat = "{{lat}}";
+  const lng = "{{lng}}";
+  const rad = "{{radius}}";
+</script>
 {% load static %}
 <script type="text/javascript" src="{% static 'get_restaurants.js' %}"></script>
 

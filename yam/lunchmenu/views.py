@@ -18,10 +18,11 @@ def information(request):
 
                 loc = loc_form.cleaned_data['current_location'].lstrip('[').rstrip(']').split(',')
 
-            return render(request, 'lunchmenu/result.html', {'lat': loc[0],
-                                                            'lng': loc[1],
-                                                            'radius': loc_form.cleaned_data['radius']})
-    
+                return render(request, 'lunchmenu/result.html', {'lat': float(loc[0]),
+                                                                'lng': float(loc[1]),
+                                                                'radius': loc_form.cleaned_data['radius']})
+            else:
+                print(loc_form.errors)
     loc_form = myforms.LocChooseForm(profile = profile)
 
     return render(request, 'lunchmenu/information.html', {'form': loc_form})

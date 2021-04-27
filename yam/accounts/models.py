@@ -58,9 +58,9 @@ class LatLngField(models.CharField):
     def from_db_value(self, value, expression, connection):
 
         if value=='':
-            return value
+            return None
         else:
-            return list(map(lambda x: x.strip(), value.replace('，', ',').split(',')))
+            return list(map(lambda x: float(x.strip()), value.replace('，', ',').split(',')))
 
 
 
