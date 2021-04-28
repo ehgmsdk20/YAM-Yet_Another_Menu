@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block header %}
+  <h1>{% block title %}Result{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    {% if rest_list %}
+        <ul>
+            {% for restaurant in rest_list %}
+                <li>{{restaurant}}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No restaurants are available.</p>
+    {% endif %}
+{% endblock %}

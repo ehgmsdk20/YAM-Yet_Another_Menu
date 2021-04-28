@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'accounts',
     'kakaomap',
+    'crawling',
     'lunchmenu',
     'django.contrib.admin',
     'django.contrib.auth',

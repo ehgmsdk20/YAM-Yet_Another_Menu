@@ -2,21 +2,41 @@
 
 
 {% block header %}
-  <h1>{% block title %}Result{% endblock %}</h1>
+    <h1>{% block title %}Result{% endblock %}</h1>
 {% endblock %}
 {% block content %}
-<input type="hidden" id="lat" value="{{lat}}">
-<input type="hidden" id="lng" value="{{lng}}">
-<input type="hidden" id="radius" value="{{radius}}">
-<div id='result'></div>
+<input id="result" type="hidden"/>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=42c0c3731cfd46222b7a73bc07e9c572&libraries=services"></script>
-<script type=>
-  const lat = "{{lat}}";
-  const lng = "{{lng}}";
-  const rad = "{{radius}}";
-</script>
-{% load static %}
-<script type="text/javascript" src="{% static 'get_restaurants.js' %}"></script>
+<script type="text/javascript">
+    const lat = "{{lat}}";
+    const lng = "{{lng}}";
+    const rad = "{{radius}}";
+    var places = new kakao.maps.services.Places();
 
+    var callback = function(result, status, pagination) {
+        if (status === kakao.maps.services.Status.OK) {
+            console.log(result);
+            console.log(pagination.current);
+            for ( var i=0; i<result.length; i++ ) {
+                document.getElementById("result").value += result[i].place_name;
+                document.getElementById("result").value += ",";
+                
+            }
+            if (pagination.hasNextPage) {
+                pagination.nextPage();
+            }
+            else {
+                var url = "{% url 'crawling:result' 'rest_list' %}".replace('rest_list', document.getElementById("result").value);
+                window.location.href=url;
+            }
+        }
+    };
+    places.categorySearch('FD6', callback, {
+        location: new kakao.maps.LatLng(lat, lng),
+        radius: rad,
+        page: 1,
+        sort: "distance"
+    });
+</script>
 
 {% endblock %}

@@ -5,12 +5,16 @@ var callback = function(result, status, pagination) {
         console.log(result);
         console.log(pagination.current);
         for ( var i=0; i<result.length; i++ ) {
-
-            document.getElementById("result").innerText += result[i].place_name;
-            document.getElementById("result").innerHTML += "<br>";
+            document.getElementById("result").value += result[i].place_name;
+            document.getElementById("result").value += ",";
+            
         }
         if (pagination.hasNextPage) {
             pagination.nextPage();
+        }
+        else {
+            var url = "{% url 'crawling:result' 'rest_list' %}".replace('rest_list', document.getElementById("result").value);
+            window.location.href=url;
         }
     }
 };
@@ -19,7 +23,8 @@ places.categorySearch('FD6', callback, {
     // Map 객체를 지정하지 않았으므로 좌표객체를 생성하여 넘겨준다.
     location: new kakao.maps.LatLng(lat, lng),
     radius: rad,
-    page: 1
+    page: 1,
+    sort: "distance"
 });
 
 

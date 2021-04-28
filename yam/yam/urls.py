@@ -19,6 +19,7 @@ from django.urls import path, include
 urlpatterns = [
     path('kakaomap/', include('kakaomap.urls')),
     path('accounts/', include('accounts.urls')),
+    path('crawling/', include('crawling.urls')),
     path('admin/', admin.site.urls),
     path('', include('lunchmenu.urls')),
 ]
