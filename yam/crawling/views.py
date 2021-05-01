@@ -9,44 +9,57 @@ from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
-import time
+from multiprocessing import Pool, Manager
 import re
+import threading
 
 
 chromedriver = 'C:/Users/doheun/Desktop/yam/chromedriver' # 셀레늄이 이용할 크롤링 드라이버 디렉토리를 입력
 
+#functions
+threadLocal = threading.local()
+
+def get_driver():
+    driver = getattr(threadLocal, 'driver', None)
+    if driver is None:
+        options = webdriver.ChromeOptions()
+        options.add_argument('window-size=1920x1080')
+        options.add_argument('headless')
+        options.add_argument("disable-gpu")
+        options.add_argument( 'user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36')
+        options.add_experimental_option("excludeSwitches", ["enable-logging"])
+        driver = webdriver.Chrome(chromedriver, chrome_options=options)
+        setattr(threadLocal, 'driver', driver)
+    return driver
+
+def checkrest(result_list, url):
+    driver=get_driver()
+    driver.get(url)
+    WebDriverWait(driver,timeout=5).until(EC.presence_of_element_located((By.CSS_SELECTOR, "#mArticle > div.cont_essential > div:nth-child(1) > div.place_details > div > h2")))
+    name = driver.find_element_by_css_selector(
+        '#mArticle > div.cont_essential > div:nth-child(1) > div.place_details > div > h2'
+    ).text
+    try:
+        rate = driver.find_element_by_css_selector(
+            '#mArticle > div.cont_evaluation > div.ahead_info > div > em'
+        ).text
+    except:
+        pass
+    else:
+        rate = re.compile('[가-힣]+').sub('', rate) #remove korean
+        if(float(rate)>3.5):
+            result_list.append((name, rate, url))
 # Create your views here.
 
 @login_required
 def result(request, rest_list):
     
-    options = webdriver.ChromeOptions()
-
-    options.add_argument('window-size=1920x1080')
-    options.add_argument('headless')
-    options.add_argument("disable-gpu")
-    options.add_experimental_option("excludeSwitches", ["enable-logging"])
-    driver = webdriver.Chrome(chromedriver, chrome_options=options)
-    
     rest_list=rest_list.rstrip(',').split(',')
-    name_list=[]
-    for id in rest_list:
-        driver.get(f'https://place.map.kakao.com/{int(id)}')
-        WebDriverWait(driver,timeout=2).until(EC.presence_of_element_located((By.CSS_SELECTOR, "#mArticle > div.cont_essential > div:nth-child(1) > div.place_details > div > h2")))
-        name = driver.find_element_by_css_selector(
-            '#mArticle > div.cont_essential > div:nth-child(1) > div.place_details > div > h2'
-        ).text
+    pool=Pool(processes = 4)
+    manager=Manager()
+    result_list = manager.list()
+    pool.starmap(checkrest, [(result_list, f'https://place.map.kakao.com/{int(id)}') for id in rest_list])
+    pool.close()
+    pool.join()
         
-        try:
-            WebDriverWait(driver,timeout=2).until(EC.presence_of_element_located((By.CSS_SELECTOR, "#mArticle > div.cont_evaluation > div.ahead_info > div > em")))
-        except:
-            continue
-        else:
-            rate = driver.find_element_by_css_selector(
-                '#mArticle > div.cont_evaluation > div.ahead_info > div > em'
-            ).text
-            rate = re.compile('[가-힣]+').sub('', rate) #remove korean
-            if(float(rate)>3.5):
-                name_list.append(name)
-        
-    return render(request, 'crawling/result.html', {'rest_list': name_list})
+    return render(request, 'crawling/result.html', {'rest_list': result_list})
