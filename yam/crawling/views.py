@@ -15,8 +15,21 @@ import threading
 import os
 
 
+
 chromedriver = 'C:/Users/doheun/Desktop/yam/chromedriver/chromedriver.exe' # 셀레늄이 이용할 크롤링 드라이버 디렉토리를 입력
 threadLocal = threading.local()
+
+ALLERGY_MENU = {
+        'SHELL': ['회','해물,생선','매운탕,해물탕'],
+        'NUT': [],
+        'EGG': ['제과,베이커리'],
+        'PNUT': [],
+        'WHEAT': ['떡볶이','국수','제과,베이커리','냉면','돈까스,우동'],
+        'FISH': ['회','해물,생선','매운탕,해물탕'],
+        'MILK': ['제과,베이커리'],
+        'CLAM': ['회','해물,생선','매운탕,해물탕'],
+        'BEAN': [],
+    }
 #functions
 
 def get_driver():
@@ -57,7 +70,7 @@ def checkrest(result_list, url, id):
 
 @login_required
 def result(request, rest_list):
-    
+    from accounts.models import MSFList, ALLERGY_CHOICES
     rest_list=rest_list.rstrip(',').split(',')
     pool=Pool(processes = 4)
     manager=Manager()
@@ -70,8 +83,14 @@ def result(request, rest_list):
     for i in result_list:
         menu = i[3]
         if menu in rest_dict:
-            rest_dict[menu].append(i)
+            rest_dict[menu][0].append(i)
         else:
-            rest_dict[menu]=[i]
+            rest_dict[menu]=([i], MSFList(ALLERGY_CHOICES, []))
+    
+    allergies=request.user.profile.allergy
+    for allergy in allergies:
+        for menu in ALLERGY_MENU[allergy]:
+            if menu in rest_dict:
+                rest_dict[menu][1].append(allergy)
 
     return render(request, 'crawling/result.html', {'rest_list': rest_dict})

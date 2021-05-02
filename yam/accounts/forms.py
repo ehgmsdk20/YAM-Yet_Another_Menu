@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth import get_user_model
 from . import models
 
 class UserForm(forms.ModelForm):
@@ -7,7 +8,7 @@ class UserForm(forms.ModelForm):
     password=forms.CharField(widget=forms.PasswordInput())
     confirm_password=forms.CharField(widget=forms.PasswordInput())
     class Meta:
-        model=models.User
+        model=get_user_model()
         fields=('username','email','password')
 
     def clean(self):

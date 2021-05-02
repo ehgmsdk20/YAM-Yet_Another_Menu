@@ -10,9 +10,12 @@
         {% for category in rest_list.items %}
             <ul>
                 <li>
-                    {{category.0}}
+                    <h3>{{category.0}}</h3>
+                    {% if category.1.1 %}
+                        <div class=danger>it may be danger for {{ category.1.1 }}</div>
+                    {% endif %}
                     <ul>
-                        {% for restaurant in category.1 %}
+                        {% for restaurant in category.1.0 %}
                             <li>
                                 {{restaurant.0}}: {{restaurant.1}}
                                 <br>

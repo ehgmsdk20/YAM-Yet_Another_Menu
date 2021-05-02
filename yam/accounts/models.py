@@ -1,12 +1,23 @@
 from django.db import models
 from django import forms
-from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.postgres.fields import ArrayField
+from django.conf import settings
 
 # Create your models here.
-User = get_user_model()
+
+ALLERGY_CHOICES = (
+    ('SHELL', '갑각류 알레르기'),
+    ('NUT', '견과 알레르기'),
+    ('EGG', '달걀 알레르기'),
+    ('PNUT', '땅콩 알레르기'),
+    ('WHEAT', '밀 알레르기'),
+    ('FISH', '생선 알레르기'),
+    ('MILK', '우유 알레르기'),
+    ('CLAM', '조개 알레르기'),
+    ('BEAN', '콩 알레르기'),
+)
 
 class MSFList(list):
 
@@ -70,22 +81,12 @@ class Profile(models.Model):
             return self.objects.get(*args, **kwargs)
         except self.DoesNotExist:
             return None
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     home = models.CharField(max_length=30, blank=True)
     home_latlng = LatLngField(max_length=50, blank=True)
     office = models.CharField(max_length=30, blank=True)
     office_latlng = LatLngField(max_length=50, blank=True)
-    ALLERGY_CHOICES = (
-        ('SHELL', '갑각류 알레르기'),
-        ('NUT', '견과 알레르기'),
-        ('EGG', '달걀 알레르기'),
-        ('PNUT', '땅콩 알레르기'),
-        ('WHEAT', '밀 알레르기'),
-        ('FISH', '생선 알레르기'),
-        ('MILK', '우유 알레르기'),
-        ('CLAM', '조개 알레르기'),
-        ('BEAN', '콩 알레르기'),
-    )
+    
     allergy = ChoiceArrayField(
             models.CharField(max_length=5, choices=ALLERGY_CHOICES, default='',),
             blank=True, null=True
