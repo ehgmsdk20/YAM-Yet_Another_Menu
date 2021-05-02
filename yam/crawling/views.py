@@ -12,12 +12,12 @@ from selenium.webdriver.support.ui import Select
 from multiprocessing import Pool, Manager
 import re
 import threading
+import os
 
 
 chromedriver = 'C:/Users/doheun/Desktop/yam/chromedriver/chromedriver.exe' # 셀레늄이 이용할 크롤링 드라이버 디렉토리를 입력
-
-#functions
 threadLocal = threading.local()
+#functions
 
 def get_driver():
     driver = getattr(threadLocal, 'driver', None)
@@ -65,6 +65,7 @@ def result(request, rest_list):
     pool.starmap(checkrest, [(result_list, f'https://place.map.kakao.com/{int(id)}', id) for id in rest_list])
     pool.close()
     pool.join()
+    os.system("taskkill /f /im chromedriver.exe /T") #kill the chromedriver
     rest_dict = {}
     for i in result_list:
         menu = i[3]
