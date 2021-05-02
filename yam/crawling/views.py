@@ -14,7 +14,7 @@ import re
 import threading
 
 
-chromedriver = 'C:/Users/doheun/Desktop/yam/chromedriver' # 셀레늄이 이용할 크롤링 드라이버 디렉토리를 입력
+chromedriver = 'C:/Users/doheun/Desktop/yam/chromedriver/chromedriver.exe' # 셀레늄이 이용할 크롤링 드라이버 디렉토리를 입력
 
 #functions
 threadLocal = threading.local()
