@@ -16,12 +16,9 @@
 
     var callback = function(result, status, pagination) {
         if (status === kakao.maps.services.Status.OK) {
-            console.log(result);
-            console.log(pagination.current);
             for ( var i=0; i<result.length; i++ ) {
                 document.getElementById("result").value += result[i].id;
                 document.getElementById("result").value += ",";
-                
             }
             if (pagination.hasNextPage) {
                 pagination.nextPage();

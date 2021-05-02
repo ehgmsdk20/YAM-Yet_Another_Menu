@@ -7,16 +7,23 @@
 
 {% block content %}
     {% if rest_list %}
-        <ul>
-            {% for restaurant in rest_list %}
+        {% for category in rest_list.items %}
+            <ul>
                 <li>
-                    {{restaurant.0}}: {{restaurant.1}}
-                    <br>
-                    <a href = '{{restaurant.2}}' class = detail>자세히 보기</a>
+                    {{category.0}}
+                    <ul>
+                        {% for restaurant in category.1 %}
+                            <li>
+                                {{restaurant.0}}: {{restaurant.1}}
+                                <br>
+                                <a href = '{{restaurant.2}}' class = detail>자세히 보기</a>
+                            </li>
+                            <br>
+                        {% endfor %}
+                    </ul>
                 </li>
-                <br>
-            {% endfor %}
-        </ul>
+            </ul>
+        {% endfor %}
     {% else %}
         <p>No restaurants are available.</p>
     {% endif %}

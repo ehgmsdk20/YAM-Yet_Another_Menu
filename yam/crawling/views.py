@@ -32,13 +32,16 @@ def get_driver():
         setattr(threadLocal, 'driver', driver)
     return driver
 
-def checkrest(result_list, url):
+def checkrest(result_list, url, id):
     driver=get_driver()
     driver.get(url)
     WebDriverWait(driver,timeout=5).until(EC.presence_of_element_located((By.CSS_SELECTOR, "#mArticle > div.cont_essential > div:nth-child(1) > div.place_details > div > h2")))
     name = driver.find_element_by_css_selector(
         '#mArticle > div.cont_essential > div:nth-child(1) > div.place_details > div > h2'
-    ).text
+        ).text
+    menu = driver.find_element_by_css_selector(
+        '#mArticle > div.cont_essential > div:nth-child(1) > div.place_details > div > div > span.txt_location'
+        ).text
     try:
         rate = driver.find_element_by_css_selector(
             '#mArticle > div.cont_evaluation > div.ahead_info > div > em'
@@ -48,7 +51,8 @@ def checkrest(result_list, url):
     else:
         rate = re.compile('[가-힣]+').sub('', rate) #remove korean
         if(float(rate)>3.5):
-            result_list.append((name, rate, url))
+            result_list.append((name, rate, url, menu, id))
+
 # Create your views here.
 
 @login_required
@@ -58,8 +62,15 @@ def result(request, rest_list):
     pool=Pool(processes = 4)
     manager=Manager()
     result_list = manager.list()
-    pool.starmap(checkrest, [(result_list, f'https://place.map.kakao.com/{int(id)}') for id in rest_list])
+    pool.starmap(checkrest, [(result_list, f'https://place.map.kakao.com/{int(id)}', id) for id in rest_list])
     pool.close()
     pool.join()
-        
-    return render(request, 'crawling/result.html', {'rest_list': result_list})
+    rest_dict = {}
+    for i in result_list:
+        menu = i[3]
+        if menu in rest_dict:
+            rest_dict[menu].append(i)
+        else:
+            rest_dict[menu]=[i]
+
+    return render(request, 'crawling/result.html', {'rest_list': rest_dict})
