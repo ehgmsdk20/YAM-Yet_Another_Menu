@@ -16,7 +16,7 @@ import os
 
 
 
-chromedriver = 'C:/Users/doheun/Desktop/yam/chromedriver/chromedriver.exe' # 셀레늄이 이용할 크롤링 드라이버 디렉토리를 입력
+chromedriver = 'C:/Users/doheun/Desktop/yam/chromedriver/chromedriver.exe'
 threadLocal = threading.local()
 
 ALLERGY_MENU = {
@@ -25,9 +25,9 @@ ALLERGY_MENU = {
         'EGG': ['제과,베이커리'],
         'PNUT': [],
         'WHEAT': ['떡볶이','국수','제과,베이커리','냉면','돈까스,우동'],
-        'FISH': ['회','해물,생선','매운탕,해물탕'],
+        'FISH': ['회','해물,생선','매운탕,해물탕','아구'],
         'MILK': ['제과,베이커리'],
-        'CLAM': ['회','해물,생선','매운탕,해물탕'],
+        'CLAM': ['회','해물,생선','매운탕,해물탕','조개'],
         'BEAN': [],
     }
 #functions
@@ -86,11 +86,14 @@ def result(request, rest_list):
             rest_dict[menu][0].append(i)
         else:
             rest_dict[menu]=([i], MSFList(ALLERGY_CHOICES, []))
-    
+    for menu in rest_dict.keys():
+        rest_dict[menu][0].sort(key=lambda x: x[1], reverse=True )
     allergies=request.user.profile.allergy
     for allergy in allergies:
         for menu in ALLERGY_MENU[allergy]:
             if menu in rest_dict:
                 rest_dict[menu][1].append(allergy)
+    items= list(rest_dict.items())
+    items.sort(key=lambda x: len(x[1][1]))
 
-    return render(request, 'crawling/result.html', {'rest_list': rest_dict})
+    return render(request, 'crawling/result.html', {'rest_list': items})

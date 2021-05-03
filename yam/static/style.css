@@ -21,7 +21,9 @@ nav ul li a, nav ul li span, header .action { display: block; padding: 0.5rem; }
 .content label { font-weight: bold; margin-bottom: 0.5em; }
 .content input, .content textarea { margin-bottom: 1em; }
 .content textarea { min-height: 12em; resize: vertical; }
-.danger { color: #cc2f2e; }
+.danger { 
+    color: #cc2f2e;
+}
 input[type=submit] { align-self: start; min-width: 10em; }
 .error input, .error select {
     border: 2px red solid;
@@ -41,4 +43,12 @@ input[type=submit] { align-self: start; min-width: 10em; }
 .notice {
     font-size: 3em;
     text-align: center;
+}
+#detail_list {
+    display: none;
+}
+.menuname {
+    float: left;
+    font-size: 1em;
+    margin-right: 1em;
 }

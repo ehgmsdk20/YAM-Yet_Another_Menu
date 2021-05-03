@@ -7,14 +7,17 @@
 
 {% block content %}
     {% if rest_list %}
-        {% for category in rest_list.items %}
+        {% for category in rest_list%}
             <ul>
-                <li>
-                    <h3>{{category.0}}</h3>
+                <li class=results>
+                    <div class=menuname>{{category.0}}</div>
                     {% if category.1.1 %}
                         <div class=danger>it may be danger for {{ category.1.1 }}</div>
+                    {% else %}
+                        <br>
                     {% endif %}
-                    <ul>
+                    <input type="button" class='detail' onclick="doDisplay('{{ forloop.counter0 }}');" value="식당 보기" />
+                    <ul id=detail_list>
                         {% for restaurant in category.1.0 %}
                             <li>
                                 {{restaurant.0}}: {{restaurant.1}}
@@ -30,4 +33,19 @@
     {% else %}
         <p>No restaurants are available.</p>
     {% endif %}
+    <script type="text/javascript">
+        const items = document.getElementsByClassName('results');
+        function doDisplay(index){
+            var rests = items[index].querySelector("#detail_list");
+            var btn = items[index].querySelector(".detail")
+            if(rests.style.display=='none'){
+                rests.style.display='block';
+                btn.value='숨기기';
+            }
+            else{
+                rests.style.display='none';
+                btn.value='식당 보기';
+            }
+        }
+    </script>
 {% endblock %}
