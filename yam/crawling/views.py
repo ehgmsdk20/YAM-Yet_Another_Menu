@@ -15,8 +15,8 @@ import threading
 import os
 
 
-
-chromedriver = 'C:/Users/doheun/Desktop/yam/chromedriver/chromedriver.exe'
+BASE_DIR = os.path.abspath(os.path.join(os.path.join((os.path.dirname(__file__)), os.pardir), os.pardir))
+chromedriver = os.path.join(BASE_DIR, 'chromedriver', 'chromedriver')
 threadLocal = threading.local()
 
 ALLERGY_MENU = {
@@ -52,6 +52,7 @@ def checkrest(result_list, url, id):
     name = driver.find_element_by_css_selector(
         '#mArticle > div.cont_essential > div:nth-child(1) > div.place_details > div > h2'
         ).text
+    print(name)
     menu = driver.find_element_by_css_selector(
         '#mArticle > div.cont_essential > div:nth-child(1) > div.place_details > div > div > span.txt_location'
         ).text
@@ -72,14 +73,16 @@ def checkrest(result_list, url, id):
 def result(request, rest_list):
     from accounts.models import MSFList, ALLERGY_CHOICES
     rest_list=rest_list.rstrip(',').split(',')
+    print(rest_list)
     pool=Pool(processes = 4)
     manager=Manager()
     result_list = manager.list()
     pool.starmap(checkrest, [(result_list, f'https://place.map.kakao.com/{int(id)}', id) for id in rest_list])
     pool.close()
     pool.join()
-    os.system("taskkill /f /im chromedriver.exe /T") #kill the chromedriver
+    os.system("killall -KILL chromedriver") #kill the chromedriver
     rest_dict = {}
+    print(rest_list)
     for i in result_list:
         menu = i[3]
         if menu in rest_dict:

@@ -13,7 +13,8 @@
     const lng = "{{lng}}";
     const rad = "{{radius}}";
     var places = new kakao.maps.services.Places();
-
+    var url = "{% url 'accounts:profile' %}";
+    alert(url);
     var callback = function(result, status, pagination) {
         if (status === kakao.maps.services.Status.OK) {
             for ( var i=0; i<result.length; i++ ) {
@@ -24,9 +25,23 @@
                 pagination.nextPage();
             }
             else {
-                var url = "{% url 'crawling:result' 'rest_list' %}".replace('rest_list', document.getElementById("result").value);
+                
                 window.location.href=url;
             }
+        } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+
+            alert('검색 결과가 존재하지 않습니다.');
+            window.location.href=url;
+
+        } else if (status === kakao.maps.services.Status.ERROR) {
+
+            alert('검색 결과 중 오류가 발생했습니다.');
+            window.location.href=url;
+
+        }
+        else {
+            alert(status);
+            return;
         }
     };
     places.categorySearch('FD6', callback, {

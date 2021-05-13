@@ -55,6 +55,10 @@ function placesSearchCB(data, status, pagination) {
         return;
 
     }
+    else {
+        alert(status);
+        return;
+    }
 }
 
 // 검색 결과 목록과 마커를 표출하는 함수입니다
@@ -71,7 +75,6 @@ function displayPlaces(places) {
 
     // 지도에 표시되고 있는 마커를 제거합니다
     removeMarker();
-    
     for ( var i=0; i<places.length; i++ ) {
 
         // 마커를 생성하고 지도에 표시합니다

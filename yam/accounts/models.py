@@ -54,7 +54,7 @@ class ChoiceArrayField(ArrayField):
         if value=='':
             return None
         else:
-            return MSFList(self.base_field.choices, map(lambda x: x.strip(), value.lstrip('{').rstrip('}').replace('，', ',').split(',')))
+            return MSFList(self.base_field.choices, map(lambda x: x.strip(), value))
 
 
 class LatLngField(models.CharField):
