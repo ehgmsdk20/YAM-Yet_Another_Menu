@@ -13,8 +13,7 @@
     const lng = "{{lng}}";
     const rad = "{{radius}}";
     var places = new kakao.maps.services.Places();
-    var url = "{% url 'accounts:profile' %}";
-    alert(url);
+    var url = "{% url 'lunchmenu:information' %}";
     var callback = function(result, status, pagination) {
         if (status === kakao.maps.services.Status.OK) {
             for ( var i=0; i<result.length; i++ ) {
@@ -25,8 +24,8 @@
                 pagination.nextPage();
             }
             else {
-                
-                window.location.href=url;
+                var result_url = "{% url 'crawling:result' 'rest_list' %}".replace('rest_list', document.getElementById("result").value);
+                window.location.href=result_url;
             }
         } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
 

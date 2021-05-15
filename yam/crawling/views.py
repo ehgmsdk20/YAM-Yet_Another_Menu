@@ -13,7 +13,8 @@ from multiprocessing import Pool, Manager
 import re
 import threading
 import os
-
+import requests
+import time
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.join((os.path.dirname(__file__)), os.pardir), os.pardir))
 chromedriver = os.path.join(BASE_DIR, 'chromedriver', 'chromedriver')
@@ -33,26 +34,44 @@ ALLERGY_MENU = {
 #functions
 
 def get_driver():
+
     driver = getattr(threadLocal, 'driver', None)
     if driver is None:
-        options = webdriver.ChromeOptions()
+
+        #proxy server setting
+        PROXY = '153.126.160.91:80'
+        webdriver.DesiredCapabilities.CHROME['proxy'] = {
+            "httpProxy": PROXY,
+            "ftpProxy": PROXY,
+            "sslProxy": PROXY,
+            "noProxy":None,
+            "proxyType":"MANUAL",
+            "class":"org.openqa.selenium.Proxy",
+            "autodetect":False
+        }
+        webdriver.DesiredCapabilities.CHROME['acceptSslCerts']=True
+
+        options = webdriver.chrome.options.Options()
         options.add_argument('window-size=1920x1080')
         options.add_argument('headless')
         options.add_argument("disable-gpu")
-        options.add_argument( 'user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36')
+        options.add_argument("user-data-dir=/home/ubuntu/.config/google-chrome")
+        options.add_argument( 'user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36')
         options.add_experimental_option("excludeSwitches", ["enable-logging"])
         driver = webdriver.Chrome(chromedriver, chrome_options=options)
         setattr(threadLocal, 'driver', driver)
     return driver
 
-def checkrest(result_list, url, id):
-    driver=get_driver()
+def checkrest(result_list, url, id, driver):
     driver.get(url)
-    WebDriverWait(driver,timeout=5).until(EC.presence_of_element_located((By.CSS_SELECTOR, "#mArticle > div.cont_essential > div:nth-child(1) > div.place_details > div > h2")))
-    name = driver.find_element_by_css_selector(
-        '#mArticle > div.cont_essential > div:nth-child(1) > div.place_details > div > h2'
-        ).text
+    print(driver.page_source)
+    name = driver.find_element_by_xpath("//meta[@property='og:title']").get_attribute("content")
     print(name)
+    try:
+        WebDriverWait(driver,timeout=5).until(EC.presence_of_element_located((By.CSS_SELECTOR, "#mArticle > div.cont_essential > div:nth-child(1) > div.place_details > div > h2")))
+    except:
+        print(driver.page_source)
+        return
     menu = driver.find_element_by_css_selector(
         '#mArticle > div.cont_essential > div:nth-child(1) > div.place_details > div > div > span.txt_location'
         ).text
@@ -66,6 +85,7 @@ def checkrest(result_list, url, id):
         rate = re.compile('[가-힣]+').sub('', rate) #remove korean
         if(float(rate)>3.5):
             result_list.append((name, rate, url, menu, id))
+    time.sleep(1)
 
 # Create your views here.
 
@@ -73,16 +93,12 @@ def checkrest(result_list, url, id):
 def result(request, rest_list):
     from accounts.models import MSFList, ALLERGY_CHOICES
     rest_list=rest_list.rstrip(',').split(',')
-    print(rest_list)
-    pool=Pool(processes = 4)
-    manager=Manager()
-    result_list = manager.list()
-    pool.starmap(checkrest, [(result_list, f'https://place.map.kakao.com/{int(id)}', id) for id in rest_list])
-    pool.close()
-    pool.join()
-    os.system("killall -KILL chromedriver") #kill the chromedriver
+    result_list=[]
+    driver = get_driver()
+    for id in rest_list:
+        checkrest(result_list, f'https://place.map.kakao.com/{int(id)}', id, driver)
+    driver.quit()
     rest_dict = {}
-    print(rest_list)
     for i in result_list:
         menu = i[3]
         if menu in rest_dict:
