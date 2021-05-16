@@ -13,6 +13,7 @@ from multiprocessing import Pool, Manager
 import re
 import threading
 import os
+import time
 
 
 
@@ -35,10 +36,12 @@ ALLERGY_MENU = {
 def get_driver():
     driver = getattr(threadLocal, 'driver', None)
     if driver is None:
+
+        webdriver.DesiredCapabilities.CHROME['acceptSslCerts']=True
         options = webdriver.ChromeOptions()
         options.add_argument('window-size=1920x1080')
-        options.add_argument('headless')
         options.add_argument("disable-gpu")
+        options.add_argument("headless")
         options.add_argument( 'user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36')
         options.add_experimental_option("excludeSwitches", ["enable-logging"])
         driver = webdriver.Chrome(chromedriver, chrome_options=options)
@@ -48,7 +51,8 @@ def get_driver():
 def checkrest(result_list, url, id):
     driver=get_driver()
     driver.get(url)
-    WebDriverWait(driver,timeout=5).until(EC.presence_of_element_located((By.CSS_SELECTOR, "#mArticle > div.cont_essential > div:nth-child(1) > div.place_details > div > h2")))
+
+    WebDriverWait(driver,timeout=10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "#mArticle > div.cont_essential > div:nth-child(1) > div.place_details > div > h2")))
     name = driver.find_element_by_css_selector(
         '#mArticle > div.cont_essential > div:nth-child(1) > div.place_details > div > h2'
         ).text
@@ -70,6 +74,7 @@ def checkrest(result_list, url, id):
 
 @login_required
 def result(request, rest_list):
+    start_time=time.time()
     from accounts.models import MSFList, ALLERGY_CHOICES
     rest_list=rest_list.rstrip(',').split(',')
     pool=Pool(processes = 4)
@@ -95,5 +100,5 @@ def result(request, rest_list):
                 rest_dict[menu][1].append(allergy)
     items= list(rest_dict.items())
     items.sort(key=lambda x: len(x[1][1]))
-
+    print("---{}s seconds---".format(time.time()-start_time))
     return render(request, 'crawling/result.html', {'rest_list': items})
