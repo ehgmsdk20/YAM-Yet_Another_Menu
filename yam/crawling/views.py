@@ -10,7 +10,6 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 import os
-import time
 import re
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.join((os.path.dirname(__file__)), os.pardir), os.pardir))
@@ -50,11 +49,9 @@ def checkrest(rest_dict, url, id, driver):
     try:
         WebDriverWait(driver,timeout=5).until(EC.presence_of_element_located((By.CSS_SELECTOR, "#mArticle > div.cont_essential > div:nth-child(1) > div.place_details > div > div > span.txt_location")))
     except:
-        print("page not loaded")
         return
 
     name = driver.find_element_by_xpath("//meta[@property='og:title']").get_attribute("content")
-    print(name)
     menu = driver.find_element_by_css_selector(
         '#mArticle > div.cont_essential > div:nth-child(1) > div.place_details > div > div > span.txt_location'
         ).text
@@ -71,11 +68,12 @@ def checkrest(rest_dict, url, id, driver):
                 rest_dict[menu][0].append((name, rate, url, menu, id))
             else:
                 rest_dict[menu]=([(name, rate, url, menu, id)], MSFList(ALLERGY_CHOICES, []))
+
+
 # Create your views here.
 
 @login_required
 def result(request, rest_list):
-    start_time = time.time()
     rest_list=rest_list.rstrip(',').split(',')
     rest_dict = {}
     driver = get_driver()
@@ -92,5 +90,4 @@ def result(request, rest_list):
                 rest_dict[menu][1].append(allergy)
     items= list(rest_dict.items())
     items.sort(key=lambda x: len(x[1][1]))
-    print("---{}s seconds---".format(time.time()-start_time))
     return render(request, 'crawling/result.html', {'rest_list': items})
