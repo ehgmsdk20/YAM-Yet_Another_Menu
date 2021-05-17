@@ -37,7 +37,6 @@ A web application that recommends lunch menus based on user information and loca
 
   <p align="center">
     A web application that recommends lunch menus based on user information and location
-
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
     ·
