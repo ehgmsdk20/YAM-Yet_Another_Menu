@@ -75,7 +75,6 @@ def checkrest(rest_dict, url, id, driver):
 
 @login_required
 def result(request, rest_list):
-    print(rest_list)
     start_time = time.time()
     rest_list=rest_list.rstrip(',').split(',')
     rest_dict = {}
