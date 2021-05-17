@@ -38,11 +38,11 @@ A web application that recommends lunch menus based on user information and loca
   <p align="center">
     A web application that recommends lunch menus based on user information and location
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="http://ec2-52-79-131-42.ap-northeast-2.compute.amazonaws.com/">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/ehgmsdk20/YAM-Yet_Another_Menu/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/ehgmsdk20/YAM-Yet_Another_Menu/issues">Request Feature</a>
   </p>
 </p>
 
