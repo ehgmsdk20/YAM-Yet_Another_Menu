@@ -199,11 +199,11 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
 [contributors-url]: https://github.com/ehgmsdk20/YAM-Yet_Another_Menu/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/ehgmsdk20/YAM-Yet_Another_Menu
 [forks-url]: https://github.com/ehgmsdk20/YAM-Yet_Another_Menu/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/ehgmsdk20/YAM-Yet_Another_Menu
 [stars-url]: https://github.com/ehgmsdk20/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/ehgmsdk20/YAM-Yet_Another_Menu
 [issues-url]: https://github.com/ehgmsdk20/YAM-Yet_Another_Menu/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [license-url]: https://github.com/ehgmsdk20/YAM-Yet_Another_Menu/blob/master/LICENSE.txt
