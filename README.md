@@ -28,11 +28,8 @@ A web application that recommends lunch menus based on user information and loca
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/ehgmsdk20/YAM-Yet_Another_Menu">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
-  <h3 align="center">YAM-Yet_Another_Menu</h3>
+  <h1 align="center">YAM-Yet_Another_Menu</h1>
 
   <p align="center">
     A web application that recommends lunch menus based on user information and location
