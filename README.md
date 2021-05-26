@@ -207,4 +207,4 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 [issues-url]: https://github.com/ehgmsdk20/YAM-Yet_Another_Menu/issues
 [license-shield]: https://img.shields.io/github/license/ehgmsdk20/YAM-Yet_Another_Menu
 [license-url]: https://github.com/ehgmsdk20/YAM-Yet_Another_Menu/blob/master/LICENSE.txt
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: https://github.com/ehgmsdk20/images/blob/main/noname01.jpg
