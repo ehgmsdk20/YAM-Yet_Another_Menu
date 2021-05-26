@@ -197,7 +197,7 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributers/ehgmsdk20/YAM-Yet_Another_Menu
+[contributors-shield]: https://img.shields.io/github/contributors/ehgmsdk20/YAM-Yet_Another_Menu
 [contributors-url]: https://github.com/ehgmsdk20/YAM-Yet_Another_Menu/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/ehgmsdk20/YAM-Yet_Another_Menu
 [forks-url]: https://github.com/ehgmsdk20/YAM-Yet_Another_Menu/network/members
