@@ -205,6 +205,6 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 [stars-url]: https://github.com/ehgmsdk20/Best-README-Template/stargazers
 [issues-shield]: https://img.shields.io/github/issues/ehgmsdk20/YAM-Yet_Another_Menu
 [issues-url]: https://github.com/ehgmsdk20/YAM-Yet_Another_Menu/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/ehgmsdk20/YAM-Yet_Another_Menu
 [license-url]: https://github.com/ehgmsdk20/YAM-Yet_Another_Menu/blob/master/LICENSE.txt
 [product-screenshot]: images/screenshot.png
