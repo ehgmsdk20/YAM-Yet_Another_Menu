@@ -77,7 +77,7 @@ A web application that recommends lunch menus based on user information and loca
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+You've probably thought about what to eat for your lunch menu. In order to solve those concerns, I started this project.
 
 Here's why:
 * Your time should be focused on creating something amazing. A project that solves a problem and helps others
@@ -90,7 +90,6 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 
 ### Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 * [Django](https://docs.djangoproject.com)
 * [PostgreSQL](https://www.postgresql.org)
 * [Kakaomap API](https://apis.map.kakao.com)
