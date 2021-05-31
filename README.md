@@ -92,7 +92,6 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 
 * [Django](https://docs.djangoproject.com)
 * [PostgreSQL](https://www.postgresql.org)
-* [Kakaomap API](https://apis.map.kakao.com)
 
 
 
@@ -169,23 +168,15 @@ Distributed under the GPL-3.0 License. See `LICENSE` for more information.
 
 Kim Doheun - ehgmsdk@kaist.ac.kr
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/ehgmsdk20/YAM-Yet_Another_Menu)
+Project Link: [https://github.com/ehgmsdk20/YAM-Yet_Another_Menu](https://github.com/ehgmsdk20/YAM-Yet_Another_Menu)
 
 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Pages](https://pages.github.com)
-* [Animate.css](https://daneden.github.io/animate.css)
-* [Loaders.css](https://connoratherton.com/loaders)
-* [Slick Carousel](https://kenwheeler.github.io/slick)
-* [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll)
-* [Sticky Kit](http://leafo.net/sticky-kit)
-* [JVectorMap](http://jvectormap.com)
-* [Font Awesome](https://fontawesome.com)
+* [Kakaomap API](https://apis.map.kakao.com)
+* [Selenium](https://www.selenium.dev/documentation/en)
+* [Tor](https://www.torproject.org)
 
 
 
