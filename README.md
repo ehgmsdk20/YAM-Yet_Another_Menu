@@ -108,9 +108,9 @@ To get a local copy up and running follow these simple example steps.
 * PostgreSQL  
   You can see how to install and set PostgreSQL in [this readme file](https://github.com/ehgmsdk20/Django_tutorial_with_PostgreSQL#readme)
 * Nginx
-  '''
+  ```
   $ sudo apt-get install nginx
-  '''
+  ```
 
 ### Installation
 
