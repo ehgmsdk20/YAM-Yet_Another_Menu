@@ -125,8 +125,9 @@ To get a local copy up and running follow these simple example steps.
    source venv/bin/activate
    pip install -r requirements.txt
    ```
-3. Get Kakaomap api key at [https://developers.kakao.com](https://developers.kakao.com)  and replace 'your_appkey' to this key in yam/kakaomap/templates/kakaomap/searchaddr.html
-4. Run Server in Django
+3. Get Kakaomap api key at [https://developers.kakao.com](https://developers.kakao.com)  
+   and replace 'your_appkey' to this key in yam/kakaomap/templates/kakaomap/searchaddr.html
+5. Run Server in Django
    ```sh
    cd yam
    python3 manage.py runserver
