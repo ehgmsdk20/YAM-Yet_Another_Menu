@@ -109,25 +109,28 @@ To get a local copy up and running follow these simple example steps.
   You can see how to install and set PostgreSQL in [this readme file](https://github.com/ehgmsdk20/Django_tutorial_with_PostgreSQL#readme)
 * Nginx
   ```
-  $ sudo apt-get install nginx
+  sudo apt-get install nginx
   ```
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/ehgmsdk20/YAM-Yet_Another_Menu.git
    ```
-3. Install NPM packages
+2. Install python packages in virtual environment
    ```sh
-   npm install
+   cd path_to_repo/yam
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
    ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
+3. Get Kakaomap api key at [https://developers.kakao.com](https://developers.kakao.com) and replace 'your_appkey' to this key in yam/kakaomap/templates/kakaomap/searchaddr.html
+4. Run Server in Django
+  ```sh
+  cd yam
+  python3 manage.py runserver
+  ```
 
 
 <!-- USAGE EXAMPLES -->
