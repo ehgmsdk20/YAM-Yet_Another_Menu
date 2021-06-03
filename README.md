@@ -104,9 +104,7 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites(in Linux)
 
 * Python3
-  ```sh
-  npm install npm@latest -g
-  ```
+  Follow instructions at [this site](https://somjang.tistory.com/entry/PythonUbuntu%EC%97%90-Python-37-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0)
 * PostgreSQL
 * Nginx
 
