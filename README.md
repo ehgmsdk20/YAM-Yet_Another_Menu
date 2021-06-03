@@ -101,13 +101,16 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites(in Linux)
+### Prerequisites(in Ubuntu)
 
 * Python3  
   Follow instructions at [this site](https://somjang.tistory.com/entry/PythonUbuntu%EC%97%90-Python-37-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0)
 * PostgreSQL  
-  You can see how to set PostgreSQL in [this readme file](https://github.com/ehgmsdk20/Django_tutorial_with_PostgreSQL#readme)
+  You can see how to install and set PostgreSQL in [this readme file](https://github.com/ehgmsdk20/Django_tutorial_with_PostgreSQL#readme)
 * Nginx
+  '''
+  $ sudo apt-get install nginx
+  '''
 
 ### Installation
 
