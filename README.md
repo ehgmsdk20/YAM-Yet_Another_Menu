@@ -139,15 +139,15 @@ To get a local copy up and running follow these simple example steps.
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 1. Main page  
-   ![Product Name Screen Shot][https://github.com/ehgmsdk20/images/blob/main/yam_main.png]
+   ![Product Name Screen Shot](https://github.com/ehgmsdk20/images/blob/main/yam_main.png)
 2. Profile
-   
+   ![Product Name Screen Shot](https://github.com/ehgmsdk20/images/blob/main/yam_profile.png)
 3. Edit Profile
-   
-4. Result
-[![Product Name Screen Shot][product-screenshot]](http://ec2-52-79-131-42.ap-northeast-2.compute.amazonaws.com)
-
-_For more examples, please refer to the [Documentation](https://example.com)_
+   ![Product Name Screen Shot](https://github.com/ehgmsdk20/images/blob/main/yam_editprofile.png)
+4. Set up search
+   ![Product Name Screen Shot](https://github.com/ehgmsdk20/images/blob/main/yam_choose.png)
+6. Result
+   ![Product Name Screen Shot](https://github.com/ehgmsdk20/images/blob/main/yam_result.jpg)
 
 
 
