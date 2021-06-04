@@ -75,7 +75,7 @@ A web application that recommends lunch menus based on user information and loca
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](http://ec2-52-79-131-42.ap-northeast-2.compute.amazonaws.com)
 
 You've probably thought about what to eat for your lunch menu. In order to solve those concerns, I started this project.
 
@@ -104,9 +104,9 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites(in Ubuntu)
 
 * Python3  
-  Follow instructions at [this site](https://somjang.tistory.com/entry/PythonUbuntu%EC%97%90-Python-37-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0)
+  - Follow instructions at [this site](https://somjang.tistory.com/entry/PythonUbuntu%EC%97%90-Python-37-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0)
 * PostgreSQL  
-  You can see how to install and set PostgreSQL in [this readme file](https://github.com/ehgmsdk20/Django_tutorial_with_PostgreSQL#readme)
+  - You can see how to install and set PostgreSQL in [this readme file](https://github.com/ehgmsdk20/Django_tutorial_with_PostgreSQL#readme)
 * Nginx
   ```
   sudo apt-get install nginx
@@ -138,6 +138,14 @@ To get a local copy up and running follow these simple example steps.
 ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+1. Main page  
+   ![Product Name Screen Shot][https://github.com/ehgmsdk20/images/blob/main/yam_main.png]
+2. Profile
+   
+3. Edit Profile
+   
+4. Result
+[![Product Name Screen Shot][product-screenshot]](http://ec2-52-79-131-42.ap-northeast-2.compute.amazonaws.com)
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
@@ -201,4 +209,4 @@ Project Link: [https://github.com/ehgmsdk20/YAM-Yet_Another_Menu](https://github
 [issues-url]: https://github.com/ehgmsdk20/YAM-Yet_Another_Menu/issues
 [license-shield]: https://img.shields.io/github/license/ehgmsdk20/YAM-Yet_Another_Menu
 [license-url]: https://github.com/ehgmsdk20/YAM-Yet_Another_Menu/blob/master/LICENSE.txt
-[product-screenshot]: https://github.com/ehgmsdk20/images/blob/main/noname01.jpg
+[product-screenshot]: https://github.com/ehgmsdk20/images/blob/main/yam_result.jpg
