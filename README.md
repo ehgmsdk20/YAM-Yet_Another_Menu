@@ -77,16 +77,14 @@ A web application that recommends lunch menus based on user information and loca
 
 [![Product Name Screen Shot][product-screenshot]](http://ec2-52-79-131-42.ap-northeast-2.compute.amazonaws.com)
 
-You've probably thought about what to eat for your lunch menu. In order to solve those concerns, I started this project.
+You've probably thought about what to eat for your lunch menu. In this case you can get help from yam.  
+I think this project is useful for the following reasons
 
 Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
+* Most portal sites such as Naver do not categorize restaurants by menu.
+* In the case of Baedal Minjok, the menu is classified by menu, but it is limited to restaurants that can deliver.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
-
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+A list of commonly used resources that I used in this project are listed in the acknowledgements.
 
 ### Built With
 
