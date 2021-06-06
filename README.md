@@ -75,7 +75,7 @@ A web application that recommends lunch menus based on user information and loca
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](http://ec2-52-79-131-42.ap-northeast-2.compute.amazonaws.com)
+[![Product Screen Shot][product-screenshot]](http://ec2-52-79-131-42.ap-northeast-2.compute.amazonaws.com)
 
 You've probably thought about what to eat for your lunch menu. In this case you can get help from yam.  
 I think this project is useful for the following reasons
@@ -137,19 +137,19 @@ To get a local copy up and running follow these simple example steps.
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 1. Main page  
-   ![Product Name Screen Shot](https://github.com/ehgmsdk20/images/blob/main/yam_main.png)
+   ![Main](https://github.com/ehgmsdk20/images/blob/main/yam_main.png)
    ***
 2. Profile
-   ![Product Name Screen Shot](https://github.com/ehgmsdk20/images/blob/main/yam_profile.png)
+   ![Profile](https://github.com/ehgmsdk20/images/blob/main/yam_profile.png)
    ***
 3. Edit Profile
-   ![Product Name Screen Shot](https://github.com/ehgmsdk20/images/blob/main/yam_editprofile.png)
+   ![EditProfile](https://github.com/ehgmsdk20/images/blob/main/yam_editprofile.png)
    ***
 4. Set up search
-   ![Product Name Screen Shot](https://github.com/ehgmsdk20/images/blob/main/yam_choose.png)
+   ![Setting](https://github.com/ehgmsdk20/images/blob/main/yam_choose.png)
    ***
 6. Result
-   ![Product Name Screen Shot](https://github.com/ehgmsdk20/images/blob/main/yam_result.jpg)
+   ![Result](https://github.com/ehgmsdk20/images/blob/main/yam_result.jpg)
    ***
 
 
