@@ -34,7 +34,7 @@ A web application that recommends lunch menus based on user information and loca
   <p align="center">
     A web application that recommends lunch menus based on user information and location
     <br />
-    <a href="http://ec2-52-79-131-42.ap-northeast-2.compute.amazonaws.com/">View Demo</a>
+    <a href="http://ec2-13-124-251-22.ap-northeast-2.compute.amazonaws.com/">View Demo</a>
     ·
     <a href="https://github.com/ehgmsdk20/YAM-Yet_Another_Menu/issues">Report Bug</a>
     ·
@@ -75,7 +75,7 @@ A web application that recommends lunch menus based on user information and loca
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Screen Shot][product-screenshot]](http://ec2-52-79-131-42.ap-northeast-2.compute.amazonaws.com)
+[![Product Screen Shot][product-screenshot]](http://ec2-13-124-251-22.ap-northeast-2.compute.amazonaws.com/)
 
 You've probably thought about what to eat for your lunch menu. In this case you can get help from yam.  
 I think this project is useful for the following reasons
